@@ -1,24 +1,24 @@
-/* Write a program that computes the volume of a sphere with a 10-meters radius
+/* Write a program that asks the user to enter a dollar-and-cents amount and then displays the amount with 5% tax added
  *
- * Use the formula v = (4/3)*pi*r^(3)
+ *Enter amount: 100.00
+ *With tax added: 105.00
  *
- * -> Write 4/3 as (4.0f/3.0f)
- * -> C doesn't have an exponention operator , u'll need to multiply r by itself 3 times
- * -> radius = r
  */
 
 #include <stdio.h>
 
-#define PI 3.14159
-#define RADIUS 10
+#define tax 0.05
 
 int main(void)
 {
-    float volume;
+    float amount, amount_plus_tax;
 
-    volume = (4.0f/3.0f) * PI * (RADIUS * RADIUS * RADIUS);
+    printf("Enter amount: ");
+    scanf("%f", &amount);
 
-    printf("The volume of a 10-meter radius sphere is: %f", volume);
+    amount_plus_tax = amount + (amount * tax);
+
+    printf("\ntax added: %.2f\n", amount_plus_tax);
 
     return 0;
 }
