@@ -1,20 +1,15 @@
-/* Converting from Fahrenheit temperature to Celsius */
+/* Write a program to display a certain picture */
 
 #include <stdio.h>
 
-#define FREEZING_PT 32.0f
-#define SCALE_FACTOR (5.0f / 9.0f)
-
 int main(void)
 {
-    float fahrenheit, celsius;
-
-    printf("Enter Fahrenheit temperature: ");
-    scanf("%f", &fahrenheit);
-
-    celsius = (fahrenheit - FREEZING_PT) * SCALE_FACTOR;
-
-    printf("Celsius equivalent is: %.1f\n", celsius);
+    printf("         *\n"); // 2 tab
+    printf("        *\n");
+    printf("       *\n");
+    printf(" *    *\n");
+    printf("  *  *\n");
+    printf("   *\n");
 
     return 0;
 }
