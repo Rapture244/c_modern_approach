@@ -1,24 +1,22 @@
-/* Write a program that asks the user to enter a dollar-and-cents amount and then displays the amount with 5% tax added
+/* Write a program that asks the user to enter a value for x and then displays the value of a polynomial
  *
- *Enter amount: 100.00
- *With tax added: 105.00
- *
+ * The polynomial --> 3x^(5) + 2x^(4)-5x^(3)-x^(2)+7x-6
  */
 
 #include <stdio.h>
 
-#define tax 0.05
+
 
 int main(void)
 {
-    float amount, amount_plus_tax;
+    float x, polynomial;
 
-    printf("Enter amount: ");
-    scanf("%f", &amount);
+    printf("Enter value: ");
+    scanf("%f", &x);
 
-    amount_plus_tax = amount + (amount * tax);
+    polynomial = 3*(x*x*x*x*x) + 2*(x*x*x*x) - 5*(x*x*x) - (x*x) + 7*x - 6;
 
-    printf("\ntax added: %.2f\n", amount_plus_tax);
+    printf("\nResult: %.2f\n", polynomial);
 
     return 0;
 }
