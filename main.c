@@ -1,39 +1,45 @@
-/* Write a program that asks the user to enter a U.S dollar amount and show how to pay that amount using the smallest $20, $10, $5, $1
+/* Write a program that calculates the remaining balance on a loan after the 1st, 2nd, 3rd montly payment
  *
- * HINT -> Divide the amount by 20 to determine the number of $20 bills needed, and then reduce the amount by the total value of the $20 bills. repeat for thr other bills.
- * HINT -> Be sure to use integer values throughout, not float
+ * Display each balance with two digits after the decimal point
  *
+ * HINT: Each month, the balance is decreased by the amount of the payment but increased by the balances times the montlhy interest rate.
+ * HINT: To find the monthly interest rate, convert the interest rate entered by the user to a % and divide it by 12
  */
 
 #include <stdio.h>
 
 int main(void)
 {
-    int amount, dollar_20, dollar_10, dollar_5, dollar_1;
+    float balance, interest_rate, montlhy_payment, montly_interest, balance_1, balance_2, balance_3;
 
-    printf("Enter a dollar amount: ");
-    scanf("%d", &amount);
+    printf("Enter amount of loan: ");
+    scanf("%f", &balance);
 
-    // Calculate the number of $20 bills
-    dollar_20 = amount / 20;
-    amount = amount % 20;  // Get the remainder after $20 bills
+    printf("Enter interest rate: ");
+    scanf("%f", &interest_rate);
 
-    // Calculate the number of $10 bills
-    dollar_10 = amount / 10;
-    amount = amount % 10;  // Get the remainder after $10 bills
+    printf("Enter monthly payment: ");
+    scanf("%f", &montlhy_payment);
 
-    // Calculate the number of $5 bills
-    dollar_5 = amount / 5;
-    amount = amount % 5;   // Get the remainder after $5 bills
+    // Convert annual interest rate to monthly interest rate
+    montly_interest = (interest_rate / 12) / 100;
 
-    // The remaining amount will be the number of $1 bills
-    dollar_1 = amount;
+    balance_1 = balance +(balance * montly_interest) - montlhy_payment;
+    balance_2 = balance_1 +(balance_1 * montly_interest) - montlhy_payment;
+    balance_3 = balance_2 +(balance_2 * montly_interest) - montlhy_payment;
 
-    // Print the results
-    printf("\n$20 bills: %d", dollar_20);
-    printf("\n$10 bills: %d", dollar_10);
-    printf("\n$5 bills: %d", dollar_5);
-    printf("\n$1 bills: %d\n", dollar_1);
+    printf("\nBalance remaining after 1st payment: %.2f", balance_1);
+    printf("\nBalance remaining after 2nd payment: %.2f", balance_2);
+    printf("\nBalance remaining after 3rd payment: %.2f", balance_3);
+
+
+    /*
+    // CHATGPT UPGRADE -> but i haven't seen loops inside the book yet
+    // Calculate and display the balance after each of the first three payments
+    for (month = 1; month <= 3; month++) {
+        balance = balance + (balance * monthly_interest) - monthly_payment;
+        printf("Balance remaining after month %d: %.2f\n", month, balance);
+    */
 
     return 0;
 }
