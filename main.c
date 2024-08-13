@@ -1,10 +1,8 @@
-/* Write a program that accept a date in the form mm/dd/yyyy then display it in different form
+/* Write a program that format product information entered by the user.
  *
- * form: yyyymmdd
- * form: yyyy mm dd
- * form: yyyy/mm/dd
- * form: yyyy.mm.dd
- * form: yyyy-mm-dd
+ * HINT: the item number and date should left justified, the unit price should be right justified
+ * HINT: Allow for dollar amount up to $9999.99
+ * HINT: Use tab
  *
  */
 
@@ -12,18 +10,32 @@
 
 int main(void)
 {
-    int mm, dd, yyyy;
+    int item_number, mm, dd, yyyy;
+    float price;
 
-    printf("Enter a date (mm/dd/yyyy): ");
+    printf("Enter item number: ");
+    scanf("%d", &item_number);
+
+    printf("Enter unit price: ");
+    scanf("%f", &price);
+
+    printf("Enter purchase date (mm/dd/yyyy): ");
     scanf("%d/%d/%d", &mm, &dd, &yyyy);
 
-    // %04d: Ensures that the year is printed as a four-digit number.
-    // %02d: Ensures that both the month and the day are printed as two-digit numbers, with leading zeros if necessary.
-    printf("\nYou entered the date (variant 1): %04d%02d%02d", yyyy, mm, dd);
-    printf("\nYou entered the date (variant 2): %04d %02d %02d", yyyy, mm, dd);
-    printf("\nYou entered the date (variant 3): %04d/%02d/%02d", yyyy, mm, dd);
-    printf("\nYou entered the date (variant 4): %04d.%02d.%02d", yyyy, mm, dd);
-    printf("\nYou entered the date (variant 5): %04d-%02d-%02d", yyyy, mm, dd);
+    printf("\nItem\t\tUnit\t\tPurchase\n");
+    printf("\t\tPrice\t\tDate\n");
+
+    /* The %7.2f format specifier ensures the price is right-justified within a field of 7 characters,  with 2 digits after the decimal point.
+     * The total width of 7 allows for the maximum value $9999.99.
+     *
+     * Explanation:
+     * - 1 character for the dollar sign ($)
+     * - 4 characters for the digits before the decimal point (up to 9999)
+     * - 1 character for the decimal point (.)
+     * - 2 characters for the digits after the decimal point (.99)
+    */
+    printf("%-d\t\t$%7.2f\t%.2d/%.2d/%d\n", item_number, price, mm, dd, yyyy);
+
 
     return 0;
 }
