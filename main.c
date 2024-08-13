@@ -1,4 +1,4 @@
-/* Write a program that ask a two-digit number, then prints the number with its digit reversed
+/* Write a program that ask a 3-digit number, then prints the number with its digit reversed
  *
  * HINT: If n is an integer, the n % 10 is the last digit in n
  * HINT: and n /10 is n with the last digit removed
@@ -8,15 +8,17 @@
 
 int main(void)
 {
-    int n, n_1, n_2;
+    int number, hundreds, tens, units;
 
-    printf("Enter a 2-digit number: ");
-    scanf("%d", &n);
+    printf("Enter a 3-digit number: ");
+    scanf("%d", &number);
 
-    n_1 = n /10;
-    n_2 = n % 10;
+    units = (number % 10);          // get the last digit
+    tens = (number % 100) / 10;     // get the middle digit
+    hundreds = (number / 100);      // get the first digit
 
-    printf("The reversal is: %d%d", n_2, n_1);
+
+    printf("The reversal is: %d%d%d", units, tens, hundreds);
 
 
     return 0;
