@@ -1,18 +1,23 @@
-/* Write a program that prompts user to enter a phone number in the form (xxx) xxx-xxxx and display it as xxx.xxx.xxxx
+/* Write a program that ask a two-digit number, then prints the number with its digit reversed
  *
- * Ex: (404) 817-6900
+ * HINT: If n is an integer, the n % 10 is the last digit in n
+ * HINT: and n /10 is n with the last digit removed
  */
 
 #include <stdio.h>
 
 int main(void)
 {
-    int parenthese, digit_3, digit_4;
+    int n, n_1, n_2;
 
-    printf("Enter phone number [(xxx) xxx-xxxx]: ");
-    scanf("(%d) %d-%d", &parenthese, &digit_3, &digit_4);
+    printf("Enter a 2-digit number: ");
+    scanf("%d", &n);
 
-    printf("\nYou entered: %d.%d.%d\n", parenthese, digit_3, digit_4);
+    n_1 = n /10;
+    n_2 = n % 10;
+
+    printf("The reversal is: %d%d", n_2, n_1);
+
 
     return 0;
 }
