@@ -1,11 +1,6 @@
-/* Write a program that calculate how many digits a number has
+/* Write a program that ask the user for a 24-hour time, then displays the 12-hour time equivalent
  *
- * You mais assume that the max number is: 4 digits
- *
- * HINT: use if statements to test the number
- * EX: if the number is between 0 and 9, it has 1 gigit
- * EX: if the number is between 10 and 99, it has 2 digits
- * Etc... until 4
+ * HINT: Be careful not to display 12:00 as 0:00
  */
 
 #include <stdio.h>
@@ -13,22 +8,27 @@
 
 int main(void)
 {
-    int number;
+    int hour, minutes;
 
-    printf("Enter a 4 digit number: ");
-    scanf("%d", &number);
+    printf("Enter a 24-hour time (hh:mm): ");
+    scanf("%d:%d", &hour, &minutes);
 
-    if (number >= 0 && number <= 9)
-        printf("The number %d has: 1 digit\n", number);
-    else if (number >= 10 && number <= 99)
-        printf("The number %d has: 2 digits\n", number);
-    else if (number >= 100 && number <= 999)
-        printf("The number %d has: 3 digits\n", number);
-    else if (number >= 1000 && number <= 9999)
-        printf("The number %d has: 4 digits\n", number);
-    else
-        printf("The number %d is out of range (more than 4 digits)\n", number);
+    if (hour == 0)
+    {// there was tow ways to do this, either changint the variable outside of the printf or inside of it
 
+        // hour = 12;
+        printf("Equivalent 12-hour time: %d:%02d AM\n", hour = 12, minutes);
+    }
+    else if (hour >= 1 && hour < 12)
+        { printf("Equivalent 12-hour time: %d:%02d AM\n", hour, minutes); }
+    else if (hour == 12)
+        { printf("Equivalent 12-hour time: %d:%02d PM\n", hour, minutes); }
+    else if (hour > 12)
+    {   // there was tow ways to do this, either changint the variable outside of the printf or inside of it
+
+        // hour -= 12;
+        printf("Equivalent 12-hour time: %d:%02d PM\n", hour -12, minutes);
+    }
 
     return 0;
 }
