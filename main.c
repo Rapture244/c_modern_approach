@@ -1,6 +1,8 @@
-/* Write a program that display the greatest common divisor (GCD) between two integers
+/* Write a program that asks the user to enter a fraction, then reduces the fraction to its lowest components
  *
- * The classic GCD algo, known as Euclid's algorithm goes as follow:
+ * HINT: To do so, 1st compute the GCD of the numerator and denominator. Then divide both the numerator and denominator by the GCD
+ *
+ * The classic GCD algo, known as Euclid's algorithm goes as follows:
  *
  * HINT: Let m and n be our variables
  * - if n is 0, then stop, m contains the GCD
@@ -14,30 +16,39 @@
 
 int main(void)
 {
-    int m, n;
+    int denominator, numerator, gdc;
 
 
     // Input validation loop
     do
     {
-        printf("Enter two integers (xx xx): ");
-        scanf("%d/%d", &m, &n);
+        printf("Enter a fraction (xx/xx): ");
+        scanf("%d/%d", &numerator, &denominator);
 
-        if (m == 0 || n == 0)
+        if (numerator == 0 || denominator == 0)
         {
             printf("Both numbers cannot be zeros. Please try again.\n");
         }
-    } while (m == 0 || n == 0);
+    } while (numerator == 0 || denominator == 0);
 
+    int m = numerator;
+    int n = denominator;
 
     // GCD calculation
     while (n != 0)
     {
         int remainder = m % n;
+
         m = n;
         n = remainder;
     }
-        printf("\nGreatest Common Divisor: %d", m);
+        printf("Greatest Common Divisor: %d\n", gdc = m);
+
+    // Lowest terms calculations
+    numerator = numerator / gdc;
+    denominator = denominator / gdc;
+
+    printf("\nThe fraction's lowest terms: %d/%d\n", numerator, denominator);
 
 
     return 0;
