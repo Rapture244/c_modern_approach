@@ -1,9 +1,12 @@
-/* Write a program that finds the largest in a series of numbers entered by the user
+/* Write a program that display the greatest common divisor (GCD) between two integers
  *
- * For now, u need to ask the user for 6 numbers
- * The program must prompt the user to enters numbers one by one.
- * When he enters a 0 or negative number, the program must displays the largest non-negative numbers entered.
+ * The classic GCD algo, known as Euclid's algorithm goes as follow:
  *
+ * HINT: Let m and n be our variables
+ * - if n is 0, then stop, m contains the GCD
+ * - otherwise, compute the remainder when m is divided by n.
+ * - Copy n into m and copy the remainder into n
+ * - then repeat the process, starting with testing whether n is 0
  */
 
 #include <stdio.h>
@@ -11,25 +14,31 @@
 
 int main(void)
 {
-    int i = 6;
-    float number, largest_num = 0;
+    int m, n;
 
 
-    while (i > 0)
+    // Input validation loop
+    do
     {
-        printf("Enter a strictly positive number: ");
-        scanf("%f", &number);
+        printf("Enter two integers (xx xx): ");
+        scanf("%d/%d", &m, &n);
 
-        if (number <= 0)              // Stop asking for numbers if a non-positive number is entered
-            break;
+        if (m == 0 || n == 0)
+        {
+            printf("Both numbers cannot be zeros. Please try again.\n");
+        }
+    } while (m == 0 || n == 0);
 
-        if (number > largest_num)     // Update largest number if the current number is larger
-            largest_num = number;
 
-        i -= 1;                      // Decrease the counter
+    // GCD calculation
+    while (n != 0)
+    {
+        int remainder = m % n;
+        m = n;
+        n = remainder;
     }
+        printf("\nGreatest Common Divisor: %d", m);
 
-    printf("\nThe largest number entered was: %.2f", largest_num);
 
     return 0;
 }
